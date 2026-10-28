@@ -1,0 +1,92 @@
+diff --git a/os/hal/lib/fallback/I2C/hal_i2c_lld.c b/os/hal/lib/fallback/I2C/hal_i2c_lld.c
+index f01acce89a..798dd91f12 100644
+--- a/os/hal/lib/fallback/I2C/hal_i2c_lld.c
++++ b/os/hal/lib/fallback/I2C/hal_i2c_lld.c
+@@ -95,17 +95,11 @@ static inline void i2c_delay(I2CDriver *i2cp) {
+ }
+ 
+ static inline msg_t i2c_check_arbitration(I2CDriver *i2cp) {
+-#if (SW_I2C_USE_OPENDRAIN == FALSE)
+-  palSetLineMode(i2cp->config->sda, PAL_MODE_INPUT);
+-#endif
+   i2c_delay(i2cp);
+   if (palReadLine(i2cp->config->sda) == PAL_LOW) {
+     i2cp->errors |= I2C_ARBITRATION_LOST;
+     return MSG_RESET;
+   }
+-#if (SW_I2C_USE_OPENDRAIN == FALSE)
+-  palSetLineMode(i2cp->config->sda, PAL_MODE_OUTPUT_PUSHPULL);
+-#endif
+   return MSG_OK;
+ }
+ 
+@@ -121,9 +115,6 @@ static inline msg_t i2c_check_timeout(I2CDriver *i2cp) {
+ }
+ 
+ static msg_t i2c_wait_clock(I2CDriver *i2cp) {
+-#if (SW_I2C_USE_OPENDRAIN == FALSE)
+-  palSetLineMode(i2cp->config->scl, PAL_MODE_INPUT);
+-#endif
+   i2c_delay(i2cp);
+ 
+   while (palReadLine(i2cp->config->scl) == PAL_LOW) {
+@@ -133,9 +124,6 @@ static msg_t i2c_wait_clock(I2CDriver *i2cp) {
+     }
+     i2c_delay(i2cp);
+   }
+-#if (SW_I2C_USE_OPENDRAIN == FALSE)
+-  palSetLineMode(i2cp->config->scl, PAL_MODE_OUTPUT_PUSHPULL);
+-#endif
+   return MSG_OK;
+ }
+ 
+@@ -213,7 +201,10 @@ static msg_t i2c_write_bit(I2CDriver *i2cp, unsigned bit) {
+ static msg_t i2c_read_bit(I2CDriver *i2cp) {
+   msg_t bit;
+ #if (SW_I2C_USE_OPENDRAIN == FALSE)
+-  palSetLineMode(i2cp->config->sda, PAL_MODE_INPUT);
++  /* Release SDA (input + pull-up) so the slave can drive it. */
++  palSetLineMode(i2cp->config->sda, PAL_MODE_INPUT_PULLUP);
++#else
++  palSetLine(i2cp->config->sda);
+ #endif
+   i2c_delay(i2cp);
+   palSetLine(i2cp->config->scl);
+@@ -225,9 +216,13 @@ static msg_t i2c_read_bit(I2CDriver *i2cp) {
+ 
+   bit = palReadLine(i2cp->config->sda);
+ #if (SW_I2C_USE_OPENDRAIN == FALSE)
++  /* Switch back to output for next write (keep SCL low during transition). */
++  palClearLine(i2cp->config->scl);
++  palClearLine(i2cp->config->sda);  /* Pre-set output register low */
+   palSetLineMode(i2cp->config->sda, PAL_MODE_OUTPUT_PUSHPULL);
+-#endif
++#else
+   palClearLine(i2cp->config->scl);
++#endif
+   i2c_delay(i2cp);
+ 
+   return bit;
+@@ -347,8 +342,20 @@ void i2c_lld_init(void) {
+  */
+ void i2c_lld_start(I2CDriver *i2cp) {
+ 
+-  /* Does nothing.*/
+-  (void)i2cp;
++  /* Initialize pins to idle state (both high). */
++#if (SW_I2C_USE_OPENDRAIN == FALSE)
++  /* Push-pull mode: start as outputs, both high. */
++  palSetLine(i2cp->config->sda);
++  palSetLine(i2cp->config->scl);
++  palSetLineMode(i2cp->config->sda, PAL_MODE_OUTPUT_PUSHPULL);
++  palSetLineMode(i2cp->config->scl, PAL_MODE_OUTPUT_PUSHPULL);
++#else
++  /* Open-drain mode: configure as inputs with external pull-ups. */
++  palSetLineMode(i2cp->config->sda, PAL_MODE_INPUT);
++  palSetLineMode(i2cp->config->scl, PAL_MODE_INPUT);
++  palSetLine(i2cp->config->sda);
++  palSetLine(i2cp->config->scl);
++#endif
+ }
+ 
+ /**

@@ -1,0 +1,45 @@
+diff --git a/os/hal/ports/SN32/SN32F290/hal_efl_lld.c b/os/hal/ports/SN32/SN32F290/hal_efl_lld.c
+index cd257b325f..8cf49a60a0 100644
+--- a/os/hal/ports/SN32/SN32F290/hal_efl_lld.c
++++ b/os/hal/ports/SN32/SN32F290/hal_efl_lld.c
+@@ -27,6 +27,13 @@
+ 
+ #include "hal.h"
+ 
++/* Flash program/erase must keep executing while the flash array is busy, so
++ * these routines and their busy-wait are linked into .ramtext (copied to SRAM by
++ * crt0). Running from flash here stalls instruction/vector fetch during the
++ * program/erase, delaying the SPI0 DMA completion IRQ enough to lose a WFI-idle
++ * wakeup on the flash-LCD branches. See keyboards/a_jazz/ak820pro readme. */
++#define SN32_EFL_RAMFUNC __attribute__((section(".ramtext"), noinline, used))
++
+ #if (HAL_USE_EFL == TRUE) || defined(__DOXYGEN__)
+ 
+ /*===========================================================================*/
+@@ -82,7 +89,7 @@ static inline void sn32_flash_clear_status(EFlashDriver *eflp) {
+   eflp->flash->STATUS_b.ERR = 0;
+ }
+ 
+-static inline void sn32_flash_wait_busy(EFlashDriver *eflp) {
++static SN32_EFL_RAMFUNC void sn32_flash_wait_busy(EFlashDriver *eflp) {
+ 
+   /* Wait for busy bit clear.*/
+   while ((eflp->flash->STATUS & SN32_FLASH_STATUS_BUSY) != 0U) {
+@@ -225,7 +232,7 @@ flash_error_t efl_lld_read(void *instance, flash_offset_t offset,
+  * @notapi
+  */
+ 
+-flash_error_t efl_lld_program(void *instance, flash_offset_t offset,
++SN32_EFL_RAMFUNC flash_error_t efl_lld_program(void *instance, flash_offset_t offset,
+                               size_t n, const uint8_t *pp) {
+     EFlashDriver *devp = (EFlashDriver *)instance;
+     flash_error_t err = FLASH_NO_ERROR;
+@@ -348,7 +355,7 @@ flash_error_t efl_lld_start_erase_all(void *instance) {
+  *
+  * @notapi
+  */
+-flash_error_t efl_lld_start_erase_sector(void *instance,
++SN32_EFL_RAMFUNC flash_error_t efl_lld_start_erase_sector(void *instance,
+                                          flash_sector_t sector) {
+   EFlashDriver *devp = (EFlashDriver *)instance;
+ 

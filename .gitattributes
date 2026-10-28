@@ -1,0 +1,6 @@
+# Preserve byte-identical upstream patches, license text and hashed firmware sources.
+firmware/patches/* -text
+firmware/licenses/* -text
+firmware/overlay/** -text
+*.png binary
+studio/tests/fixtures/verified-payload.bin binary

@@ -1,0 +1,444 @@
+{
+  "generator": "tools/generate_assets.py",
+  "alpha_bits": 4,
+  "fonts": [
+    {
+      "enum": "SMALL",
+      "file": "OpenSans-Semibold.ttf",
+      "size_px": 9,
+      "glyphs": 111,
+      "bytes": 1738,
+      "height": 12,
+      "baseline": 10,
+      "cap_top": 3,
+      "cap_bottom": 10,
+      "sha256": "aa3b0ef53db12e3d45094030cac0e69d384e44cc5978643dd4390041cad546e2"
+    },
+    {
+      "enum": "BODY",
+      "file": "OpenSans-Semibold.ttf",
+      "size_px": 11,
+      "glyphs": 111,
+      "bytes": 2418,
+      "height": 14,
+      "baseline": 11,
+      "cap_top": 3,
+      "cap_bottom": 11,
+      "sha256": "aa3b0ef53db12e3d45094030cac0e69d384e44cc5978643dd4390041cad546e2"
+    },
+    {
+      "enum": "TITLE",
+      "file": "OpenSans-ExtraBold.ttf",
+      "size_px": 13,
+      "glyphs": 111,
+      "bytes": 3519,
+      "height": 16,
+      "baseline": 13,
+      "cap_top": 4,
+      "cap_bottom": 13,
+      "sha256": "0fcbdb5cbeea00ae532352c7c94a7d288ebc911ba85f4d595012032dcab64ba8"
+    },
+    {
+      "enum": "BIG",
+      "file": "OpenSans-ExtraBold.ttf",
+      "size_px": 21,
+      "glyphs": 111,
+      "bytes": 9076,
+      "height": 25,
+      "baseline": 20,
+      "cap_top": 5,
+      "cap_bottom": 20,
+      "sha256": "0fcbdb5cbeea00ae532352c7c94a7d288ebc911ba85f4d595012032dcab64ba8"
+    },
+    {
+      "enum": "CLOCK",
+      "file": "OpenSans-ExtraBold.ttf",
+      "size_px": 38,
+      "glyphs": 13,
+      "bytes": 2888,
+      "height": 27,
+      "baseline": 27,
+      "cap_top": 0,
+      "cap_bottom": 27,
+      "sha256": "0fcbdb5cbeea00ae532352c7c94a7d288ebc911ba85f4d595012032dcab64ba8"
+    }
+  ],
+  "font_license": "Open Sans, Copyright 2011 Google Corporation, Apache License 2.0",
+  "icons": [
+    {
+      "enum": "HOME",
+      "mdi": "home",
+      "codepoint": "U+F02DC",
+      "sizes": [
+        16,
+        28
+      ]
+    },
+    {
+      "enum": "CODEX",
+      "mdi": "console",
+      "codepoint": "U+F018D",
+      "sizes": [
+        12,
+        16,
+        28
+      ]
+    },
+    {
+      "enum": "CLAUDE",
+      "mdi": "star-four-points",
+      "codepoint": "U+F0AE2",
+      "sizes": [
+        12,
+        16,
+        28
+      ]
+    },
+    {
+      "enum": "LIGHT",
+      "mdi": "lightbulb-on",
+      "codepoint": "U+F06E8",
+      "sizes": [
+        12,
+        16,
+        28
+      ]
+    },
+    {
+      "enum": "KNOB",
+      "mdi": "rotate-right",
+      "codepoint": "U+F0467",
+      "sizes": [
+        12,
+        16,
+        28
+      ]
+    },
+    {
+      "enum": "DISPLAY",
+      "mdi": "monitor",
+      "codepoint": "U+F0379",
+      "sizes": [
+        16,
+        28
+      ]
+    },
+    {
+      "enum": "DEVICE",
+      "mdi": "keyboard",
+      "codepoint": "U+F030C",
+      "sizes": [
+        16,
+        28
+      ]
+    },
+    {
+      "enum": "HELP",
+      "mdi": "help-circle-outline",
+      "codepoint": "U+F0625",
+      "sizes": [
+        16,
+        28
+      ]
+    },
+    {
+      "enum": "USB",
+      "mdi": "usb",
+      "codepoint": "U+F0553",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "BT",
+      "mdi": "bluetooth",
+      "codepoint": "U+F00AF",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "RF",
+      "mdi": "access-point",
+      "codepoint": "U+F0003",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "APPLE",
+      "mdi": "apple",
+      "codepoint": "U+F0035",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "WINDOWS",
+      "mdi": "microsoft-windows",
+      "codepoint": "U+F05B3",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "CAPS",
+      "mdi": "apple-keyboard-caps",
+      "codepoint": "U+F0632",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "BOLT",
+      "mdi": "lightning-bolt",
+      "codepoint": "U+F140B",
+      "sizes": [
+        9,
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "LINK",
+      "mdi": "link-variant",
+      "codepoint": "U+F0339",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "LINK_OFF",
+      "mdi": "link-variant-off",
+      "codepoint": "U+F033A",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "VOLUME",
+      "mdi": "volume-high",
+      "codepoint": "U+F057E",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "MUTE",
+      "mdi": "volume-off",
+      "codepoint": "U+F0581",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "MEDIA",
+      "mdi": "play-pause",
+      "codepoint": "U+F040E",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "NEXT",
+      "mdi": "skip-next",
+      "codepoint": "U+F04AD",
+      "sizes": [
+        16
+      ]
+    },
+    {
+      "enum": "PREV",
+      "mdi": "skip-previous",
+      "codepoint": "U+F04AE",
+      "sizes": [
+        16
+      ]
+    },
+    {
+      "enum": "BRIGHT",
+      "mdi": "brightness-6",
+      "codepoint": "U+F00DF",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "ZOOM",
+      "mdi": "magnify-plus-outline",
+      "codepoint": "U+F06ED",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "RESET",
+      "mdi": "update",
+      "codepoint": "U+F06B0",
+      "sizes": [
+        10,
+        12
+      ]
+    },
+    {
+      "enum": "SLEEP",
+      "mdi": "sleep",
+      "codepoint": "U+F04B2",
+      "sizes": [
+        16
+      ]
+    },
+    {
+      "enum": "IMAGE",
+      "mdi": "image-multiple",
+      "codepoint": "U+F02F9",
+      "sizes": [
+        16
+      ]
+    },
+    {
+      "enum": "POWER",
+      "mdi": "power",
+      "codepoint": "U+F0425",
+      "sizes": [
+        16
+      ]
+    },
+    {
+      "enum": "PALETTE",
+      "mdi": "palette",
+      "codepoint": "U+F03D8",
+      "sizes": [
+        16
+      ]
+    },
+    {
+      "enum": "SPEED",
+      "mdi": "speedometer",
+      "codepoint": "U+F04C5",
+      "sizes": [
+        16
+      ]
+    },
+    {
+      "enum": "EFFECT",
+      "mdi": "auto-fix",
+      "codepoint": "U+F0068",
+      "sizes": [
+        16
+      ]
+    },
+    {
+      "enum": "CHECK",
+      "mdi": "check",
+      "codepoint": "U+F012C",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "BACK",
+      "mdi": "chevron-left",
+      "codepoint": "U+F0141",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "CHEVRON",
+      "mdi": "chevron-right",
+      "codepoint": "U+F0142",
+      "sizes": [
+        12
+      ]
+    },
+    {
+      "enum": "CLOCK",
+      "mdi": "clock-outline",
+      "codepoint": "U+F0150",
+      "sizes": [
+        16
+      ]
+    },
+    {
+      "enum": "FACE",
+      "mdi": "view-dashboard-outline",
+      "codepoint": "U+F0A1D",
+      "sizes": [
+        16
+      ]
+    },
+    {
+      "enum": "SYSTEM",
+      "mdi": "laptop",
+      "codepoint": "U+F0322",
+      "sizes": [
+        16
+      ]
+    },
+    {
+      "enum": "ALERT",
+      "mdi": "alert-circle-outline",
+      "codepoint": "U+F05D6",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "SYNC",
+      "mdi": "sync",
+      "codepoint": "U+F04E6",
+      "sizes": [
+        12,
+        16
+      ]
+    },
+    {
+      "enum": "SAT",
+      "mdi": "water-percent",
+      "codepoint": "U+F058E",
+      "sizes": [
+        16
+      ]
+    },
+    {
+      "enum": "LINKS",
+      "mdi": "swap-horizontal-bold",
+      "codepoint": "U+F0BCD",
+      "sizes": [
+        16,
+        28
+      ]
+    },
+    {
+      "enum": "PAIR",
+      "mdi": "link-plus",
+      "codepoint": "U+F0C94",
+      "sizes": [
+        16
+      ]
+    }
+  ],
+  "icon_bytes": 10467,
+  "icon_source": {
+    "file": "JetBrainsMonoNLNerdFont-Regular.ttf",
+    "sha256": "efd0c812226247ba45bb31a816ec63876fb0d8d930dbb0e633770965fcc81081",
+    "license": "Material Design Icons (Pictogrammers) Apache-2.0; Nerd Fonts patcher MIT; JetBrains Mono OFL-1.1"
+  }
+}

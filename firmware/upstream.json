@@ -1,0 +1,90 @@
+{
+  "repository": "https://github.com/fpb/qmk_firmware.git",
+  "commit": "8777e05bd03182565052850fab2afd1d34de1e77",
+  "submodules": [
+    {
+      "path": "lib/chibios",
+      "mode": "160000",
+      "type": "commit",
+      "sha": "8bd61b804303f1614d574546c2dd735eeabb09f5"
+    },
+    {
+      "path": "lib/chibios-contrib",
+      "mode": "160000",
+      "type": "commit",
+      "sha": "5bed8690c4434309e3ab3e14348e70e588eb192f"
+    },
+    {
+      "path": "lib/googletest",
+      "mode": "160000",
+      "type": "commit",
+      "sha": "e2239ee6043f73722e7aa812a459f54a28552929"
+    },
+    {
+      "path": "lib/lufa",
+      "mode": "160000",
+      "type": "commit",
+      "sha": "549b97320d515bfca2f95c145a67bd13be968faa"
+    },
+    {
+      "path": "lib/lvgl",
+      "mode": "160000",
+      "type": "commit",
+      "sha": "e19410f8f8a256609da72cff549598e0df6fa4cf"
+    },
+    {
+      "path": "lib/pico-sdk",
+      "mode": "160000",
+      "type": "commit",
+      "sha": "d0c5cac430cc955b65efa0e899748853d9a80928"
+    },
+    {
+      "path": "lib/printf",
+      "mode": "160000",
+      "type": "commit",
+      "sha": "c2e3b4e10d281e7f0f694d3ecbd9f320977288cc"
+    },
+    {
+      "path": "lib/vusb",
+      "mode": "160000",
+      "type": "commit",
+      "sha": "819dbc1e5d5926b17e27e00ca6d3d2988adae04e"
+    }
+  ],
+  "chibios_patch_order": [
+    {
+      "patch": "hardware_pwm.diff",
+      "sha256": "5c518901eb3519d0e74f99fd6c1be770f15722840c3932e9be59066484022335",
+      "result": "applied"
+    },
+    {
+      "patch": "i2c_fallback.diff",
+      "sha256": "310f6583c812b1daf7155b136025ef701de2b5ec8b79125c3a6cb5bb635aafab",
+      "result": "applied"
+    },
+    {
+      "patch": "rtc_lld.diff",
+      "sha256": "cc44d91dbafffd09f53d8f8a2cc0b537e6eeeab615766eb8ef97fddd41cf1db4",
+      "result": "applied"
+    },
+    {
+      "patch": "spi_fifo_pump.diff",
+      "sha256": "864ed8e0d48a9fcfb6ffabce69a54eb10c47aa6cceb49ebeec6ba9e583ac037d",
+      "result": "applied"
+    },
+    {
+      "patch": "spi_flash_dma.diff",
+      "sha256": "100a045ea39538879f75fbce392d09d9a4e74f130bf9dae3fd078f59f1cdf0ff",
+      "result": "applied"
+    },
+    {
+      "patch": "efl_ramtext.diff",
+      "sha256": "ac3e72828906845048985b12d8dfa6110040145b0fe01477572786c888301078",
+      "result": "applied"
+    }
+  ],
+  "tested_toolchain": "Arm GNU Toolchain 13.2.Rel1 / GCC 13.2.1",
+  "target": "a_jazz/ak820pro:studio",
+  "dashboard_backend": "qp",
+  "lcd_panel": "v1"
+}

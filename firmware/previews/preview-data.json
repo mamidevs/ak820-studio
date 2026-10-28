@@ -1,0 +1,28 @@
+{
+  "renderer": "Firmware C app_menu + app_raster + app_font + app_icons, 16 bands of 128x8",
+  "data": "Illustrative host fixtures from firmware/tools/sim.c; never compiled into firmware.",
+  "scenes": [
+    "home",
+    "home-single-window",
+    "home-bt-unplugged",
+    "home-clock",
+    "home-clock-single-window",
+    "home-toast",
+    "home-stale",
+    "home-empty",
+    "menu",
+    "menu-codex",
+    "codex",
+    "claude-stale",
+    "light",
+    "light-edit",
+    "knob",
+    "display",
+    "link",
+    "link-system",
+    "device",
+    "device-bt",
+    "shortcuts",
+    "boot"
+  ]
+}

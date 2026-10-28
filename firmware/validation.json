@@ -1,0 +1,19 @@
+{
+  "publication_audit_date": "2026-10-28",
+  "source_files_matched": 20,
+  "studio_patch_clean_base_apply": true,
+  "patched_files_match_overlay": true,
+  "six_chibios_patches_clean_base_apply": true,
+  "hardware_access_performed": false,
+  "firmware_rebuilt_in_publication_audit": false,
+  "cpu_tests": {
+    "menu_suites": 9,
+    "menu_assertions": 106755,
+    "bridge_checks": 121,
+    "raster_checks": 2617,
+    "idle_checks": 101,
+    "address_sanitizer": "passed",
+    "undefined_behavior_sanitizer": "passed"
+  },
+  "fictional_previews_regenerated": true
+}

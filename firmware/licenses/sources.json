@@ -1,0 +1,17 @@
+[
+  {
+    "file": "Material-Design-Icons-LICENSE.txt",
+    "source": "https://raw.githubusercontent.com/Templarian/MaterialDesign/master/LICENSE",
+    "sha256": "3bae6305bcaa6d10219b999f65c342034c2d40b1c0e8567fa08605e73ccba829"
+  },
+  {
+    "file": "Nerd-Fonts-LICENSE.txt",
+    "source": "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/LICENSE",
+    "sha256": "1f6ad4edae6479aaace3112ede5279a23284ae54b2a34db66357aef5f64df160"
+  },
+  {
+    "file": "JetBrains-Mono-OFL-1.1.txt",
+    "source": "https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/OFL.txt",
+    "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697"
+  }
+]

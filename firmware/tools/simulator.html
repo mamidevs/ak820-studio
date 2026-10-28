@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AK820 Ekran Simülatörü</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1120;--panel:#121a2b;--line:#26324a;--text:#eef2f7;--muted:#94a3b8;--lime:#bdf16e;--violet:#a78bfa}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(1200px 600px at 20% -10%,#17233a 0,var(--bg) 60%);color:var(--text);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+main{max-width:1040px;margin:0 auto;padding:40px 20px}
+.eyebrow{letter-spacing:.18em;font-size:11px;color:var(--lime);font-weight:600}
+h1{font-size:30px;letter-spacing:-.02em;margin:8px 0 6px}
+p.lead{color:var(--muted);margin:0 0 28px;max-width:620px}
+.layout{display:grid;grid-template-columns:minmax(300px,440px) 1fr;gap:36px;align-items:start}
+.deck{background:linear-gradient(160deg,#2a3242,#141a25);border:1px solid #3a4558;border-radius:28px;padding:26px;box-shadow:0 30px 70px #0009,inset 0 1px 0 #ffffff14;display:flex;gap:22px;align-items:center}
+.bezel{background:#05070c;border-radius:12px;padding:10px;box-shadow:inset 0 0 0 1px #000,0 1px 0 #ffffff12;flex:0 0 auto}
+canvas{display:block;width:256px;height:256px;image-rendering:pixelated;border-radius:3px}
+.knob-wrap{display:flex;flex-direction:column;align-items:center;gap:10px}
+.knob{width:92px;height:92px;border-radius:50%;border:none;cursor:grab;background:repeating-conic-gradient(#2c3443 0 4deg,#1c222d 4deg 8deg);box-shadow:0 10px 24px #000a,inset 0 2px 0 #ffffff1c,inset 0 -6px 12px #0007;position:relative;transition:transform .12s ease-out}
+.knob::after{content:"";position:absolute;inset:18px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#3a4352,#1a1f29);box-shadow:inset 0 1px 0 #ffffff22}
+.knob:focus-visible{outline:2px solid var(--lime);outline-offset:4px}
+.knob.pressed{transform:scale(.95)}
+.hint{font-size:11px;color:var(--muted);text-align:center}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}
+.panel h2{font-size:15px;margin:0 0 14px}
+.row{display:flex;gap:8px;margin:8px 0;flex-wrap:wrap}
+button.ctl{flex:1;min-height:44px;min-width:92px;border-radius:10px;border:1px solid #33405a;background:#1a2336;color:var(--text);font:inherit;cursor:pointer;transition:background .15s}
+button.ctl:hover{background:#243049}
+button.ctl:focus-visible,select:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+button.fn[aria-pressed=true]{background:var(--lime);color:#1a2410;border-color:var(--lime);font-weight:650}
+select{width:100%;min-height:44px;border-radius:10px;background:#1a2336;color:var(--text);border:1px solid #33405a;padding:0 12px;font:inherit}
+.status{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin-top:16px;font-size:13px}
+.status dt{color:var(--muted)}
+.status dd{margin:0}
+.intent{margin-top:14px;min-height:40px;padding:10px 12px;border-radius:10px;background:#1a2336;border:1px dashed #3a4a66;color:var(--violet);font-size:13px}
+kbd{font:12px ui-monospace,Menlo,monospace;background:#1f2a40;border:1px solid #35425c;border-bottom-width:2px;border-radius:5px;padding:1px 6px;color:#dbe4f0}
+.keys{color:var(--muted);font-size:12px;margin-top:16px;line-height:2}
+.note{color:var(--muted);font-size:12px;margin-top:28px;border-top:1px solid var(--line);padding-top:16px}
+@media (max-width:760px){.layout{grid-template-columns:1fr}.deck{justify-content:center;flex-wrap:wrap}canvas{width:224px;height:224px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">AK820 · ÖZEL EKRAN</div>
+  <h1>Ekran simülatörü</h1>
+  <p class="lead">Klavyedeki 128×128 ekranın firmware C kodu bu Mac'te çalışıyor; gördüğün pikseller klavyeye gidecek olanlarla birebir aynı. Klavyeye hiçbir şey gönderilmez.</p>
+  <div class="layout">
+    <div>
+      <div class="deck">
+        <div class="bezel"><canvas id="lcd" width="128" height="128" role="img" aria-label="AK820 ekranı, 128 × 128 piksel"></canvas></div>
+        <div class="knob-wrap">
+          <button class="knob" id="knob" aria-label="Düğme: tıkla bas, tekerlekle çevir"></button>
+          <div class="hint">tıkla = bas<br>tekerlek = çevir</div>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>Kontroller</h2>
+      <div class="row">
+        <button class="ctl" id="left">↶ Sola çevir</button>
+        <button class="ctl" id="press">Bas</button>
+        <button class="ctl" id="right">Sağa çevir ↷</button>
+      </div>
+      <div class="row">
+        <button class="ctl fn" id="fn" aria-pressed="false">Fn basılı</button>
+        <button class="ctl" id="menu">Fn + bas · Menü</button>
+      </div>
+      <div class="row">
+        <select id="preset" aria-label="Veri senaryosu">
+          <option value="1">Canlı Studio verisi</option>
+          <option value="4">Tek pencere örneği (Codex 7 gün, Claude 5 saat)</option>
+          <option value="5">Bluetooth, kablo çekili (veri 12 dk eski)</option>
+          <option value="3">Kota azalıyor · Caps açık · Medya modu</option>
+          <option value="2">Studio gecikmeli · Bluetooth · pil %8</option>
+          <option value="0">Hiç veri yok (Studio kapalı)</option>
+        </select>
+      </div>
+      <dl class="status">
+        <dt>Sayfa</dt><dd id="page">—</dd>
+        <dt>Mod</dt><dd id="mode">—</dd>
+      </dl>
+      <div class="intent" id="intent" role="status" aria-live="polite">Düğme eylemleri burada görünür.</div>
+      <div class="keys"><kbd>←</kbd> <kbd>→</kbd> çevir · <kbd>Boşluk</kbd> bas · <kbd>F</kbd> basılı tut = Fn · <kbd>Esc</kbd> geri</div>
+    </div>
+  </div>
+  <p class="note">Veri senaryoları örnek değerlerdir ve yalnız simülatörde bulunur; gerçek firmware her şeyi "bilinmiyor" olarak başlatır ve sadece Studio'dan doğrulanmış veriyi gösterir. Ses, medya ve zoom eylemleri bilgisayara gönderilmez, yalnız niyet olarak listelenir.</p>
+</main>
+<script>
+const TOKEN='__TOKEN__';
+const ctx=document.getElementById('lcd').getContext('2d');
+const img=ctx.createImageData(128,128);
+const knobs=['Ses','Medya','Parlaklık','Işık','Yakınlaştır'];
+let fn=false,chain=Promise.resolve(),angle=0;
+function paint(buf){const b=new Uint8Array(buf),d=img.data;for(let i=0,j=0;i<b.length;i+=2,j+=4){const v=(b[i]<<8)|b[i+1];d[j]=((v>>11)&31)*255/31;d[j+1]=((v>>5)&63)*255/63;d[j+2]=(v&31)*255/31;d[j+3]=255}ctx.putImageData(img,0,0)}
+function show(s){document.getElementById('page').textContent=s.page+(s.menu?' · menü açık':'')+(s.editing?' · düzenleniyor':'');document.getElementById('mode').textContent=knobs[s.knob]+(s.face?' · saat yüzü':' · halka yüzü');if(s.action_label)document.getElementById('intent').textContent='Klavye gönderirdi: '+s.action_label}
+async function frame(){const r=await fetch('/frame');paint(await r.arrayBuffer())}
+function post(path,body){chain=chain.then(async()=>{const r=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json','X-Token':TOKEN},body:JSON.stringify(body)});if(!r.ok)throw Error('Simülatör yanıt vermedi');show(await r.json());await frame()}).catch(e=>{document.getElementById('intent').textContent=e.message});return chain}
+const send=ev=>post('/event',{events:ev});
+const turn=d=>{angle+=d*18;document.getElementById('knob').style.transform=`rotate(${angle}deg)`;send([[1,fn?1:0],[3,d]])};
+const press=()=>{const k=document.getElementById('knob');k.classList.add('pressed');setTimeout(()=>k.classList.remove('pressed'),120);send([[1,fn?1:0],[2,0]])};
+function setFn(v){fn=v;document.getElementById('fn').setAttribute('aria-pressed',String(v))}
+document.getElementById('left').onclick=()=>turn(-1);
+document.getElementById('right').onclick=()=>turn(1);
+document.getElementById('press').onclick=press;
+document.getElementById('knob').onclick=press;
+document.getElementById('fn').onclick=()=>setFn(!fn);
+document.getElementById('menu').onclick=()=>send([[1,1],[2,0],[1,0]]);
+document.getElementById('preset').onchange=e=>{document.getElementById('intent').textContent='Senaryo yüklendi.';post('/reset',{preset:+e.target.value}).then(()=>send([[0,900]]))};
+document.getElementById('knob').addEventListener('wheel',e=>{e.preventDefault();turn(e.deltaY>0?1:-1)},{passive:false});
+document.addEventListener('keydown',e=>{if(e.target.tagName==='SELECT')return;if(['ArrowLeft','ArrowRight',' ','Escape'].includes(e.key))e.preventDefault();if(e.repeat&&e.key.toLowerCase()==='f')return;if(e.key==='ArrowLeft')turn(-1);if(e.key==='ArrowRight')turn(1);if(e.key===' '&&e.target.tagName!=='BUTTON')press();if(e.key==='Escape')send([[4,0]]);if(e.key.toLowerCase()==='f')setFn(true)});
+document.addEventListener('keyup',e=>{if(e.key.toLowerCase()==='f')setFn(false)});
+window.addEventListener('blur',()=>setFn(false));
+frame();setInterval(()=>{if(!document.hidden)send([[0,100]])},100);
+</script>
+</body>
+</html>

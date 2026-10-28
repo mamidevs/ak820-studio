@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>AK820 Studio</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-screen" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="3"/><path d="M8 21h8M12 17v4"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.3 6.7L21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3L12 3Z"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="m10 14 4-4M8 16l-1 1a4.2 4.2 0 0 1-6-6l4-4a4.2 4.2 0 0 1 6 0m2 10a4.2 4.2 0 0 0 6 0l4-4a4.2 4.2 0 0 0-6-6l-1 1" transform="translate(1 0) scale(.92 1)"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m3 16 5-5 5 5 3-3 5 5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 3h12l4 4v14H3V3h2Z"/><path d="M7 3v6h10V3M7 21v-8h10v8"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-usb" viewBox="0 0 24 24"><path d="M12 21V3m-3 3 3-3 3 3M12 16l6-5V7M12 13 6 9V6"/><circle cx="12" cy="20" r="1"/><path d="M16 5h4v3h-4"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+  </defs></svg>
+
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#durum" aria-label="AK820 Studio ana sayfa"><span class="brand-mark">ak<span>↗</span></span><span class="brand-name">AK820<span>STUDIO</span></span></a>
+      <div class="sidebar-group-label">ÇALIŞMA ALANI</div>
+      <nav aria-label="Ana menü">
+        <button type="button" class="nav-item active" data-panel="screen" aria-label="Ekran" aria-current="page"><svg aria-hidden="true"><use href="#i-screen"/></svg><span>Ekran</span><span class="nav-dot"></span></button>
+        <button type="button" class="nav-item" data-panel="lighting" aria-label="Aydınlatma"><svg aria-hidden="true"><use href="#i-spark"/></svg><span>Aydınlatma</span><span class="soon-dot" title="USB aydınlatma kontrolü"></span></button>
+        <button type="button" class="nav-item" data-panel="connections" aria-label="Durum"><svg aria-hidden="true"><use href="#i-info"/></svg><span>Durum</span></button>
+        <button type="button" class="nav-item" data-panel="sources" aria-label="Bağlantılar"><svg aria-hidden="true"><use href="#i-link"/></svg><span>Bağlantılar</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="device-illustration" aria-hidden="true"><div class="mini-keys"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="mini-screen"></div><div class="mini-knob"></div></div>
+        <strong>AJAZZ AK820 Pro</strong><span>Size ait küçük bir ekran.</span>
+        <div class="local-label"><span></span> Bu Mac üzerinde çalışır</div>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar"><div class="breadcrumb">AK820 Pro <span>/</span> <strong id="breadcrumb-page">Ekran</strong></div><div class="device-status" id="device-status" role="status"><span class="status-dot"></span><span id="device-label">Cihaz aranıyor</span><span class="status-port">USB</span></div></header>
+
+      <main>
+        <div class="protocol-notice" id="protocol-notice" role="status" hidden><svg aria-hidden="true"><use href="#i-info"/></svg><div><strong>QMK menüsü etkin</strong><p>Görsel/GIF ve stock RGB aktarımı bu firmware’e henüz bağlanmadı. Mevcut cihaz verilerini Durum sayfasında görebilirsiniz.</p></div><a href="#durum">Durumu aç</a></div>
+        <section id="panel-screen" class="page-panel" aria-labelledby="page-title">
+          <div class="page-heading"><div><p class="eyebrow">128 × 128. SONSUZ OLASILIK.</p><h1 id="page-title">Ekran stüdyosu<span>.</span></h1><p class="page-description">Bir görsel seçin, kendinize göre ayarlayın, klavyenize gönderin.</p></div><button id="save-preset" class="button secondary" type="button"><svg><use href="#i-save"/></svg>Önayar kaydet</button></div>
+          <div class="notice error-notice" id="error-notice" role="alert" hidden><span id="error-message"></span><button type="button" id="dismiss-error" aria-label="Hata mesajını kapat"><svg><use href="#i-close"/></svg></button></div>
+          <div class="studio-grid">
+            <section class="preview-column" aria-labelledby="preview-title">
+              <div class="preview-panel">
+                <div class="panel-heading"><h2 id="preview-title"><span class="tiny-dot"></span>ÖNİZLEME</h2><span class="dimension-tag">128 × 128 px</span></div>
+                <div class="screen-stage" id="screen-stage">
+                  <div class="screen-shell"><div class="screen-bezel"><img id="screen-preview" width="128" height="128" alt="Yerel ekran görseli önizlemesi" draggable="false"><div class="preview-loading" id="preview-loading"><span class="spinner"></span><span>Önizleme hazırlanıyor</span></div></div><div class="screen-chin"><span>AJAZZ</span><i></i></div></div>
+                  <div class="screen-shadow"></div>
+                </div>
+                <div class="preview-tools"><span id="preview-caption">Klavyeye gönderilecek 128 × 128 görüntü</span><button id="animation-toggle" class="icon-button" type="button" aria-label="Animasyonu duraklat" hidden><svg><use href="#i-pause"/></svg></button></div>
+                <div class="preview-metadata"><span id="frame-label">1 kare</span><span class="divider-dot">·</span><span id="size-label">128 × 128</span><span class="render-chip" id="render-chip">Hazırlanıyor</span></div>
+              </div>
+              <button class="dropzone" id="dropzone" type="button"><span class="upload-icon"><svg><use href="#i-image"/></svg></span><span><strong id="asset-name">Bir görsel ekleyin</strong><span id="asset-details">Sürükleyip bırakın veya dosya seçin</span><small>PNG, JPG, WebP veya GIF</small></span><svg class="drop-arrow"><use href="#i-upload"/></svg></button>
+              <input type="file" id="file-input" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+              <p class="privacy-note" id="image-limits">En fazla 12 MB · GIF için 140 kare · Görselleriniz bu Mac’te kalır.</p><p class="preview-note" id="preview-note" hidden></p>
+              <section id="media-display-controls" class="media-display-controls" aria-labelledby="media-display-title" hidden><h3 id="media-display-title">Klavye ekranı</h3><p id="media-display-state">Kayıtlı görsel bilgisi bekleniyor.</p><div><button type="button" class="button secondary" id="media-show" disabled>Görseli göster</button><button type="button" class="button secondary" id="media-hide" disabled>Canlı ekrana dön</button></div><p id="media-display-result" role="status" hidden></p></section>
+              <div class="preset-row"><svg><use href="#i-save"/></svg><label for="preset-select" class="sr-only">Kayıtlı önayarlar</label><select id="preset-select"><option value="">Kayıtlı önayar seçin</option></select><button type="button" id="load-preset" class="text-button" disabled>Yükle</button></div>
+            </section>
+
+            <section class="inspector" aria-labelledby="settings-title">
+              <div class="inspector-top"><h2 id="settings-title">Görsel ayarları</h2><button class="text-button reset-button" id="reset-settings" type="button"><svg><use href="#i-reset"/></svg>Sıfırla</button></div>
+              <fieldset id="settings-fieldset">
+                <div class="control-section"><label class="control-title">Yerleşim</label><div class="layout-options" role="group" aria-label="Yerleşim şablonu"><button type="button" class="layout-choice active" data-layout="image" aria-pressed="true"><span class="layout-sample sample-image"></span><span>Görsel</span></button><button type="button" class="layout-choice" data-layout="card" aria-pressed="false"><span class="layout-sample sample-card"><i></i><b></b></span><span>Kart</span></button><button type="button" class="layout-choice" data-layout="poster" aria-pressed="false"><span class="layout-sample sample-poster"><i></i><b></b></span><span>Poster</span></button></div></div>
+                <div class="template-settings" id="template-settings" hidden><label for="title-input">Başlık</label><input type="text" id="title-input" maxlength="32" value="MERHABA"><label for="subtitle-input">Alt başlık</label><input type="text" id="subtitle-input" maxlength="40" value="BENİM EKRANIM"><label for="accent-input" class="color-control">Vurgu rengi<input type="color" id="accent-input" value="#bcf26d"></label></div>
+                <div class="control-section framing-section"><div class="control-title-row"><label class="control-title" for="fit-select">Kadraj</label><select id="fit-select" class="compact-select"><option value="cover">Ekranı doldur</option><option value="contain">Tamamını sığdır</option></select></div><div class="slider-control"><div><label for="zoom-input">Yakınlaştırma</label><output id="zoom-output" for="zoom-input">1.00×</output></div><input type="range" id="zoom-input" min="1" max="3" step="0.05" value="1"></div><div class="position-controls"><div class="slider-control"><div><label for="x-input">Yatay</label><output id="x-output" for="x-input">0</output></div><input type="range" id="x-input" min="-1" max="1" step="0.02" value="0"></div><div class="slider-control"><div><label for="y-input">Dikey</label><output id="y-output" for="y-input">0</output></div><input type="range" id="y-input" min="-1" max="1" step="0.02" value="0"></div></div></div>
+                <div class="control-section"><label class="control-title">Efekt</label><div class="effect-options" role="group" aria-label="Görsel efekti"><button type="button" class="effect-choice active" data-effect="none" aria-pressed="true">Orijinal</button><button type="button" class="effect-choice" data-effect="mono" aria-pressed="false">Siyah beyaz</button><button type="button" class="effect-choice" data-effect="warm" aria-pressed="false">Sıcak</button><button type="button" class="effect-choice" data-effect="cool" aria-pressed="false">Soğuk</button><button type="button" class="effect-choice" data-effect="invert" aria-pressed="false">Negatif</button><button type="button" class="effect-choice" data-effect="pixel" aria-pressed="false">Piksel</button></div></div>
+                <details class="adjustments" open><summary>Işık ve renk <span>+</span></summary><div class="adjustment-body"><div class="slider-control"><div><label for="brightness-input">Parlaklık</label><output for="brightness-input" id="brightness-output">100%</output></div><input type="range" id="brightness-input" min="0" max="2" step="0.05" value="1"></div><div class="slider-control"><div><label for="contrast-input">Kontrast</label><output for="contrast-input" id="contrast-output">100%</output></div><input type="range" id="contrast-input" min="0" max="2" step="0.05" value="1"></div><div class="slider-control"><div><label for="saturation-input">Doygunluk</label><output for="saturation-input" id="saturation-output">100%</output></div><input type="range" id="saturation-input" min="0" max="2" step="0.05" value="1"></div><div class="paired-controls"><label class="color-control" for="background-input">Arka plan<input type="color" id="background-input" value="#0b0e12"></label><label for="rotation-input" class="rotation-control">Döndür<select id="rotation-input"><option value="0">0°</option><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select></label></div></div></details>
+              </fieldset>
+            </section>
+          </div>
+          <div class="firmware-note"><svg><use href="#i-info"/></svg><p>Görsel, klavyenin resim/GIF alanına gönderilir. Yerleşik saat ve ayar sayfaları klavyenin kendi menüsünde kalır.</p></div>
+        </section>
+
+        <section id="panel-lighting" class="page-panel" aria-labelledby="lighting-title" hidden>
+          <div class="page-heading"><div><p class="eyebrow">RESMÎ SÜRÜCÜDEN · 20 MOD</p><h1 id="lighting-title">Aydınlatma<span>.</span></h1><p class="page-description">Resmî efektinizi seçin, ışığı ayarlayın ve USB üzerinden uygulayın.</p></div><span class="neutral-badge">USB aydınlatma kontrolü</span></div>
+          <div class="rgb-catalog-layout">
+            <div class="future-card lighting-card rgb-color-card"><div class="rgb-preview-heading"><span class="tiny-dot"></span>YALNIZCA RENK ÖNİZLEMESİ</div><div class="large-keyboard" id="rgb-preview" aria-label="Klavye ışık rengi görsel önizlemesi"></div><div class="future-details"><h2>Renginizi keşfedin.</h2><p>Bu çizim yalnızca seçtiğiniz rengi gösterir. Efekt animasyonunu veya klavyenin gerçek LED davranışını temsil etmez.</p><div class="rgb-color-label"><span class="rgb-color-dot" id="rgb-color-dot"></span><span id="rgb-preview-color-label">#FFFFFF · renk önizlemesi</span></div></div></div>
+            <section class="rgb-catalog-card" aria-labelledby="rgb-catalog-title"><div class="rgb-catalog-heading"><div><h2 id="rgb-catalog-title">Efekt ve ayarlar</h2><p>Değişiklikler yalnızca Uygula ile gönderilir.</p></div><span class="rgb-mode-number" id="rgb-mode-number">—</span></div>
+              <label for="rgb-mode-select" class="rgb-field-label">Efekt</label><select id="rgb-mode-select" disabled><option>Efektler yükleniyor…</option></select>
+              <p id="rgb-mode-subtitle" class="rgb-mode-subtitle">Resmî sürücünün mod tanımları okunuyor.</p>
+              <div id="rgb-catalog-error" class="rgb-catalog-error" role="alert" hidden></div>
+              <div class="rgb-control-list-heading">BU MODUN AYARLARI <span id="rgb-draft-label">YEREL TASLAK</span></div><fieldset id="rgb-settings-fieldset"><dl id="rgb-mode-controls" class="rgb-mode-controls"></dl></fieldset>
+              <p id="rgb-no-controls" class="rgb-no-controls" hidden>Bu modda ayarlanabilir parametre yok.</p>
+              <p id="rgb-software-defaults" class="rgb-software-defaults"></p>
+              <div class="rgb-actions"><button id="rgb-apply-button" class="button primary" type="button" disabled><span id="rgb-apply-label">Ayarları uygula</span><svg><use href="#i-arrow"/></svg></button><div class="rgb-power-actions"><button id="rgb-power-on" class="button secondary" type="button" disabled>Aydınlatmayı aç</button><button id="rgb-power-off" class="button secondary" type="button" disabled>Aydınlatmayı kapat</button></div><p>Son yerel seçimle açılır; cihaz ayarı okunmaz. Bu düğmeler yalnızca aydınlatmayı kontrol eder.</p></div>
+              <div id="rgb-transfer-status" class="rgb-transfer-status" role="status"><strong id="rgb-transfer-title">USB bağlantısı bekleniyor</strong><span id="rgb-transfer-description">Ayarlar henüz gönderilmedi.</span><progress id="rgb-progress" value="0" max="1" aria-label="Aydınlatma aktarım ilerlemesi" hidden></progress></div>
+              <p id="rgb-local-status" class="rgb-local-status">Cihazın mevcut ışık durumu okunmadı.</p>
+            </section>
+          </div>
+          <div class="rgb-source-note"><svg><use href="#i-info"/></svg><p>USB komutları resmî sürücünün kodundan çıkarıldı. Komut yanıtı, LED’lerin istenen görünümde olduğunu tek başına doğrulamaz; uyguladıktan sonra klavyeyi kontrol edin.</p></div>
+          <details class="rgb-provenance"><summary>Kaynak ve doğrulama sınırları</summary><p>AJAZZ AK820 Pro V1.0.0.5 resmî sürücüsünün USB yolu ve mod tanımları incelendi. Efekt adları sürücünün İngilizce adlarıyla korunur. Ekran stüdyosundaki görsel filtreleri, bu donanım efektlerinden ayrıdır.</p><p id="rgb-range-note">Parlaklık ve hız 1–5 aralığında. Destekleyen modlarda sola/sağa veya yukarı/aşağı yön seçenekleri kullanılır. Aralıklar ve seçenekler resmî sürücünün arayüz ve gönderim kodundan doğrulandı.</p><p>Mevcut cihaz ayarları okunmaz. Son seçim bu Mac’te saklanır; kayıt yoksa başlangıç taslağı sabit beyazdır. Aç düğmesi son yerel seçimi, kapat düğmesi LED Off modunu gönderir.</p></details>
+        </section>
+
+        <section id="panel-connections" class="page-panel" aria-labelledby="connections-title" hidden>
+          <div class="page-heading status-heading"><div><p class="eyebrow">KLAVYE + BU MAC</p><h1 id="connections-title">Canlı durum<span>.</span></h1><p class="page-description">Cihaz ölçümleri ve hesaplardan alınan son kullanım bilgileri.</p></div><button id="refresh-host-link" class="button secondary" type="button"><svg aria-hidden="true"><use href="#i-reset"/></svg><span>Yenile</span></button></div>
+          <div class="host-feedback" id="host-feedback" role="status">Durum bağlantısı hazırlanıyor.</div>
+          <section class="host-device-card" aria-labelledby="host-device-title">
+            <div class="host-card-heading"><div><p class="eyebrow">CİHAZDAN OKUNAN</p><h2 id="host-device-title">AJAZZ AK820 Pro</h2></div><span class="neutral-badge" id="host-device-badge">Veri bekleniyor</span></div>
+            <dl class="device-facts"><div><dt>Bağlantı</dt><dd id="host-connection">—</dd></div><div><dt>Pil</dt><dd id="host-battery">—</dd></div><div><dt>Şarj</dt><dd id="host-charging">—</dd></div><div><dt>Firmware</dt><dd id="host-firmware">—</dd></div></dl>
+            <p class="snapshot-time" id="host-device-time">Henüz ölçüm alınmadı.</p><p class="host-card-note" id="host-device-note">Bilinmeyen pil seviyesi %0 olarak gösterilmez.</p>
+          </section>
+          <section class="host-settings-card" aria-labelledby="host-settings-title"><div class="host-card-heading"><h2 id="host-settings-title">Ekran ayarları</h2><span class="neutral-badge">Bu oturum için</span></div><p id="host-settings-note" class="host-card-note">Ayar bağlantısı bekleniyor.</p><fieldset id="host-settings-controls" disabled hidden><div class="host-setting-row"><div><span class="host-setting-label">Klavye ekranı</span><span id="host-screen-current">Durum bilinmiyor</span></div><button id="host-screen-toggle" class="button secondary" type="button" disabled>Ekran durumu bekleniyor</button></div><div class="host-setting-row"><div><label for="host-sleep-select">Ekran uyku süresi</label><span>İşlem yapılmadığında</span></div><div class="host-sleep-actions"><select id="host-sleep-select" aria-describedby="host-settings-note"><option value="">Süre seçin</option></select><button id="host-sleep-apply" class="button secondary" type="button" disabled>Uygula</button></div></div></fieldset><p id="host-settings-result" class="host-settings-result" role="status" hidden></p></section>
+          <div class="usage-grid">
+            <article class="usage-card" aria-labelledby="codex-title"><div class="host-card-heading"><h2 id="codex-title">Codex</h2><span class="neutral-badge" id="codex-badge">Veri bekleniyor</span></div><p class="usage-message" id="codex-message">Hesap verisi henüz alınmadı.</p>
+              <div class="usage-window"><div><span>5 saatlik kalan</span><strong id="codex-short-value">—</strong></div><meter id="codex-short-meter" min="0" max="100" value="0" aria-label="Codex 5 saatlik kalan yüzde" hidden></meter><p id="codex-short-reset">Yenilenme zamanı bilinmiyor</p></div>
+              <div class="usage-window"><div><span>Haftalık kalan</span><strong id="codex-weekly-value">—</strong></div><meter id="codex-weekly-meter" min="0" max="100" value="0" aria-label="Codex haftalık kalan yüzde" hidden></meter><p id="codex-weekly-reset">Yenilenme zamanı bilinmiyor</p></div>
+              <div class="usage-provenance"><p id="codex-source">Kaynak bekleniyor</p><p id="codex-time">Henüz veri alınmadı</p></div>
+            </article>
+            <article class="usage-card" aria-labelledby="claude-title"><div class="host-card-heading"><h2 id="claude-title">Claude Code</h2><span class="neutral-badge" id="claude-badge">Veri bekleniyor</span></div><p class="usage-message" id="claude-message">Hesap verisi henüz alınmadı.</p>
+              <div class="usage-window"><div><span>5 saatlik kalan</span><strong id="claude-short-value">—</strong></div><meter id="claude-short-meter" min="0" max="100" value="0" aria-label="Claude Code 5 saatlik kalan yüzde" hidden></meter><p id="claude-short-reset">Yenilenme zamanı bilinmiyor</p></div>
+              <div class="usage-window"><div><span>Haftalık kalan</span><strong id="claude-weekly-value">—</strong></div><meter id="claude-weekly-meter" min="0" max="100" value="0" aria-label="Claude Code haftalık kalan yüzde" hidden></meter><p id="claude-weekly-reset">Yenilenme zamanı bilinmiyor</p></div>
+              <div class="usage-provenance"><p id="claude-source">Kaynak bekleniyor</p><p id="claude-time">Henüz veri alınmadı</p></div>
+            </article>
+          </div>
+          <div class="host-sync-note"><svg aria-hidden="true"><use href="#i-link"/></svg><div><strong id="host-sync-title">Klavye bağlantısı bekleniyor</strong><p id="host-sync-description">Bu sayfa alınan verileri gösterir; klavye ekranının canlı görüntüsü değildir.</p><p class="snapshot-time" id="host-sync-time">Henüz başarılı bağlantı yok.</p></div></div>
+          <p class="host-footnote">Yüzdeler kalan kullanımı gösterir. “Veri yok” bir sıfır değeri değildir. Kaynak ve son alınma zamanı her hesap için ayrı belirtilir.</p>
+        </section>
+        <section id="panel-sources" class="page-panel" aria-labelledby="sources-title" hidden>
+          <div class="page-heading status-heading"><div><p class="eyebrow">BU MAC’TEKİ HESAPLARINIZ</p><h1 id="sources-title">Bağlantılar<span>.</span></h1><p class="page-description">Codex ve Claude Code kullanım verilerini Studio’ya bağlayın.</p></div></div>
+          <p class="connections-intro">Bağlantıyı kesmek yalnızca Studio’ya veri aktarımını durdurur. Hesabınızdan çıkış yapmaz.</p>
+          <div id="connections-feedback" class="host-feedback" role="status">Bağlantılar okunuyor.</div>
+          <div class="connection-grid">
+            <article class="connection-card" aria-labelledby="connection-codex-title">
+              <div class="host-card-heading"><h2 id="connection-codex-title">Codex</h2><span class="neutral-badge" id="connection-codex-status">Bekleniyor</span></div>
+              <p class="connection-message" id="connection-codex-message">Yerel bağlantı bilgisi bekleniyor.</p>
+              <dl class="connection-facts"><div><dt>Studio’ya aktarım</dt><dd id="connection-codex-forwarding">Bilinmiyor</dd></div><div><dt>Son veri</dt><dd id="connection-codex-time">Henüz veri alınmadı</dd></div></dl>
+              <p class="connection-setup-note" id="connection-codex-setup-note" hidden></p>
+              <div class="connection-actions"><button type="button" class="button primary" id="connection-codex-connect" disabled>Bağla</button><button type="button" class="button secondary" id="connection-codex-disconnect" disabled hidden>Bağlantıyı kes</button><button type="button" class="button secondary" id="connection-codex-refresh" disabled><svg aria-hidden="true"><use href="#i-reset"/></svg>Yenile</button><button type="button" class="button secondary" id="connection-codex-setup" disabled hidden>Kurulumu tamamla</button></div>
+              <p class="connection-result" id="connection-codex-result" role="status" hidden></p>
+            </article>
+            <article class="connection-card" aria-labelledby="connection-claude_code-title">
+              <div class="host-card-heading"><h2 id="connection-claude_code-title">Claude Code</h2><span class="neutral-badge" id="connection-claude_code-status">Bekleniyor</span></div>
+              <p class="connection-message" id="connection-claude_code-message">Yerel bağlantı bilgisi bekleniyor.</p>
+              <p class="connection-explanation">Bağla, gerekirse Claude Code durum satırı bağlantısını kurar. Mevcut durum satırınız korunur.</p>
+              <dl class="connection-facts"><div><dt>Studio’ya aktarım</dt><dd id="connection-claude_code-forwarding">Bilinmiyor</dd></div><div><dt>Son veri</dt><dd id="connection-claude_code-time">Henüz veri alınmadı</dd></div></dl>
+              <p class="connection-setup-note" id="connection-claude_code-setup-note" hidden></p>
+              <div class="connection-actions"><button type="button" class="button primary" id="connection-claude_code-connect" disabled>Bağla</button><button type="button" class="button secondary" id="connection-claude_code-disconnect" disabled hidden>Bağlantıyı kes</button><button type="button" class="button secondary" id="connection-claude_code-refresh" disabled><svg aria-hidden="true"><use href="#i-reset"/></svg>Yenile</button><button type="button" class="button secondary" id="connection-claude_code-setup" disabled hidden>Kurulumu tamamla</button></div>
+              <p class="connection-result" id="connection-claude_code-result" role="status" hidden></p>
+            </article>
+          </div>
+          <p class="host-footnote">Bağlanmak, verinin geldiği anlamına gelmez. Son veri zamanı ve açıklama her kaynak için ayrı gösterilir. Alınan kullanım değerlerini <a href="#durum">Durum sayfasında</a> görebilirsiniz.</p>
+        </section>
+      </main>
+
+      <footer class="sendbar" id="sendbar"><div class="send-status"><span class="send-status-icon"><svg><use href="#i-screen"/></svg></span><div><strong id="send-status-title">Önizleme hazırlanıyor</strong><span id="send-status-description">Görsel henüz klavyeye gönderilmedi.</span></div></div><div class="send-action"><div class="transfer-progress" id="transfer-progress" hidden><progress id="job-progress" max="1" value="0" aria-label="Aktarım ilerlemesi"></progress><span id="progress-label">0%</span></div><button class="button primary send-button" id="send-button" type="button" disabled><span id="send-button-label">Klavyeye gönder</span><svg><use href="#i-arrow"/></svg></button></div></footer>
+    </div>
+  </div>
+
+  <dialog id="preset-dialog"><form id="preset-form"><div class="dialog-heading"><h2>Bu görünümü saklayın.</h2><button type="button" class="icon-button" id="close-preset-dialog" aria-label="Önayar penceresini kapat"><svg><use href="#i-close"/></svg></button></div><p>Görsel ve tüm ayarlarıyla, bir sonraki sefer için.</p><label for="preset-name">Önayar adı</label><input type="text" id="preset-name" maxlength="60" required placeholder="Örneğin: Çalışma masam" autocomplete="off"><p id="preset-error" class="inline-error" role="alert" hidden></p><div class="dialog-actions"><button type="button" class="button secondary" id="cancel-preset">Vazgeç</button><button type="submit" class="button primary" id="confirm-save-preset">Kaydet</button></div></form></dialog>
+  <div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>

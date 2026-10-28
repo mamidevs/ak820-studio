@@ -1,0 +1,3 @@
+# Versions used for the source publication's validation.
+Pillow==12.3.0
+hidapi==0.15.0

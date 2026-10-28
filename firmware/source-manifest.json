@@ -1,0 +1,110 @@
+{
+  "upstream_commit": "8777e05bd03182565052850fab2afd1d34de1e77",
+  "patch": "patches/studio-v3.2.patch",
+  "patch_sha256": "13d86be7bb6e984842dd6b779053b5dfaa0e915f8d11fa857fcba9287df68a8e",
+  "patch_apply_verified": true,
+  "binary_sha256": "849f3cf0d5e17b504d1d7287c2268c800ba107be91fd3942d9ece0bc48cd850e",
+  "files": [
+    {
+      "path": "keyboards/a_jazz/ak820pro/ak820pro.c",
+      "sha256": "1e33afd4daad5d1bc0a9af7ef910f006c17fa188a03a95313a544c42acf965da",
+      "bytes": 28308
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/app_menu/app_bridge.c",
+      "sha256": "b000350923e3553a250b11ef128f63efea7d388b7b1d44b97f18b4bef5c2d589",
+      "bytes": 6045
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/app_menu/app_bridge.h",
+      "sha256": "566c35ac34cb94603c8f03dcd8574daf3b280167d22233675bbe7caefa28ebbb",
+      "bytes": 1157
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/app_menu/app_font.c",
+      "sha256": "6eadff10ffc34f3ae414d720ad6b73da37917343ed57fbacce211cecedc942fa",
+      "bytes": 78352
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/app_menu/app_font.h",
+      "sha256": "6d2ae72b38b7b92ef39fe173104c5fe53160494ceb91d407290db6b77daa418a",
+      "bytes": 1298
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/app_menu/app_icons.c",
+      "sha256": "5f95581bf540a67cd1456815769c4418f3f794c776d9c0e181e533838004f68a",
+      "bytes": 32174
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/app_menu/app_icons.h",
+      "sha256": "2f4c05b728cf15d73db536ac67301b6bed01abb0f233491c6a023a5bd03acb88",
+      "bytes": 1523
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/app_menu/app_media.c",
+      "sha256": "7e57389ee1599dcc7be73fc25d9d57cc8fe196337b4d60ae26a67e5efb72b2aa",
+      "bytes": 2878
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/app_menu/app_media.h",
+      "sha256": "7c2b8f01c7676a82fa17c1fb23e5a84172d4b28adb0f56b864f3f3dad25ad5a7",
+      "bytes": 712
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/app_menu/app_menu.c",
+      "sha256": "660ee997dd4e058fbd14ac8b764fb45352941331dc6461eaadf5edca6d7622b1",
+      "bytes": 52035
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/app_menu/app_menu.h",
+      "sha256": "29364efb1ce688d438cca6f41d1b31923a112ceaa0007fba0ffb7e4386f21300",
+      "bytes": 7821
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/app_menu/app_raster.c",
+      "sha256": "f9c64a3f909265664a71a728fdadbaf6b0bee3feacaf5c6d4ee2f7b69654c228",
+      "bytes": 9715
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/app_menu/app_raster.h",
+      "sha256": "10a697c0702ef81ccf00c80904b69891db2a260d27c91cb238966c7cc98bad19",
+      "bytes": 682
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/app_menu/display_app.h",
+      "sha256": "3fb13a3bf7cb8dae22fff1301c100855d375399098f504b91c69bdfa034c09e3",
+      "bytes": 471
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/app_menu/menu_input_adapter.c",
+      "sha256": "33720b08a4e37f6d9f775aef0e0130f3e2d93981971b379cdf4d315788778802",
+      "bytes": 6235
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/app_menu/menu_input_adapter.h",
+      "sha256": "27c9a6105e3603ac0baa2f476126b42c69bf00deb445d0cb97e74ed53ecad048",
+      "bytes": 509
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/graphics/display_app.c",
+      "sha256": "b46eced077dbe3badb750481aab37e0cac505423155f68093e11205336b00b2a",
+      "bytes": 7786
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/keymaps/studio/keymap.c",
+      "sha256": "5d2ac6fcd9dc2914253c6a33f4b9ed3013ef7f69aaf463f763f6020f61555b9a",
+      "bytes": 15525
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/keymaps/studio/rules.mk",
+      "sha256": "8e2a05824b37ae813488d70316dbe438d9e0378815db5fd679201adb02e2589f",
+      "bytes": 70
+    },
+    {
+      "path": "keyboards/a_jazz/ak820pro/rules.mk",
+      "sha256": "3e85589750bfdffae9ec9710f1fac61d7a369b0c9973bfdbc758dabe3db472fd",
+      "bytes": 4269
+    }
+  ],
+  "publication_source_verified": true
+}
